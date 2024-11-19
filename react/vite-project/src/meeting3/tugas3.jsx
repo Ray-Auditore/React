@@ -13,7 +13,7 @@ function Greeting({name,message}) {
           <h2>User Profile</h2>
           <p>Username:John doe {username}</p>
           <p>Age:25 {age}</p>
-          <p>Location:New Yorks  {location}</p>
+          <p>Location:New Yorks {location}</p>
           <Greeting name="Alice" message="Welcome to the react!" />
         </div>
       );
