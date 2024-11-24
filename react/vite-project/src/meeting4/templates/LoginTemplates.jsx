@@ -20,7 +20,7 @@ export default function LoginTemplate({ formData, handleChange, handleSubmit, st
               belum punya akun{" "}
               <a href="/register" style={styles.link}>
                 Register
-              </a>
+              </a>    
             </>
           }
           style={styles.footer}
