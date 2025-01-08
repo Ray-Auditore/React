@@ -1,62 +1,110 @@
-import{Product} from "./product"
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { products } from "./product";
 
+function ShoppingCard({ title, price, src, quantity, onUpdate }) {
+  const increment = () => {
+    onUpdate(title, price, 1);
+  };
 
-function Card({ product }) {
-  const [count, setCount] = useState(0)
-
-  const handleAdd = () => {
-    setCount(count + 1)
-  }
-
-  const handleSubtract = () => {
-    if (count > 0) setCount(count - 1)
-  }
-
-  const totalPrice = count * product.price
+  const decrement = () => {
+    if (quantity > 0) {
+      onUpdate(title, price, -1);
+    }
+  };
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <img src={product.image} alt={product.title} className="w-full" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{product.title}</div>
-        <p className="text-gray-700 text-base">
-          {product.price.toLocaleString('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
+    <div className="border rounded-lg shadow-lg p-4">
+      <img
+        src={src}
+        alt={title}
+        className="w-full h-32 object-cover rounded-t-lg"
+      />
+      <div className="py-2">
+        <h2 className="text-md font-semibold">{title}</h2>
+        <p className="text-gray-700">
+          Harga:{" "}
+          {price.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
+        </p>
+        <p className="text-gray-700">Quantity: {quantity}</p>
+        <p className="text-gray-700">
+          Total:{" "}
+          {(quantity * price).toLocaleString("id-ID", {
+            style: "currency",
+            currency: "IDR",
           })}
         </p>
       </div>
-      <div className="px-6 pt-4 pb-2">
+      <div className="flex justify-between mt-2">
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={handleAdd}
+          className="bg-blue-500 text-white w-1/3 py-2 rounded-md"
+          onClick={increment}
         >
           Tambah
         </button>
         <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
-          onClick={handleSubtract}
+          className="bg-red-500 text-white w-1/3 py-2 rounded-md"
+          onClick={decrement}
         >
           Kurang
         </button>
-        <p className="text-gray-700 text-base mt-2">
-          Total: {totalPrice.toLocaleString('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-          })}
-        </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default function Praktek1() {
+export default function Produk() {
+  const [totalHarga, setTotalHarga] = useState(0);
+  const [rincian, setRincian] = useState({});
+
+  const handleUpdate = (title, price, quantityChange) => {
+    setTotalHarga((prevTotal) => prevTotal + price * quantityChange);
+
+    setRincian((prevRincian) => {
+      const prevData = prevRincian[title] || { quantity: 0, total: 0 };
+      const newQuantity = prevData.quantity + quantityChange;
+
+      return {
+        ...prevRincian,
+        [title]: {
+          quantity: newQuantity > 0 ? newQuantity : 0,
+          total: newQuantity > 0 ? newQuantity * price : 0,
+        },
+      };
+    });
+  };
+
   return (
-    <div className="flex flex-wrap justify-center">
-      {products.map(product => (
-        <Card key={product.id} product={product} />
-      ))}
-    </div>
-  )
+    <>
+      <div className="grid grid-cols-3 gap-4">
+        {products.map((product) => (
+          <ShoppingCard
+            key={product.id}
+            title={product.title}
+            price={product.price}
+            src={product.image}
+            quantity={rincian[product.title]?.quantity || 0}
+            onUpdate={handleUpdate}
+          />
+        ))}
+      </div>
+      <div className="mt-6 border-t pt-4">
+        <h2 className="text-xl font-semibold">Rincian Harga:</h2>
+        <ul className="list-disc list-inside">
+          {products.map((product) => (
+            <li key={product.id} className="text-gray-700">
+              {product.title} x {rincian[product.title]?.quantity || 0} ={" "}
+              {(rincian[product.title]?.total || 0).toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })}
+            </li>
+          ))}
+        </ul>
+        <p className="text-lg font-bold mt-4">
+          Total Harga:{" "}
+          {totalHarga.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
+        </p>
+      </div>
+    </>
+  );
 }

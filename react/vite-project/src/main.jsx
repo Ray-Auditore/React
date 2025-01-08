@@ -10,9 +10,11 @@ import SimpleNameList from "./meeting9/updateState.jsx";
 import UpdateStateWithMap from "./meeting9/updateState2.jsx";
 import ProductList from "./meeting9/praktek/praktek1.jsx";
 import UpdateStateWithMap2 from "./meeting9/praktek/praktek1.jsx";
+import Praktek1 from "./meeting9/praktek/praktek1.jsx";
+import ShoppingCard from "./meeting9/praktek/praktek1.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <UpdateStateWithMap2 />
+    <ShoppingCard />
   </StrictMode>
 );
