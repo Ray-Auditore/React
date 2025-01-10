@@ -12,9 +12,11 @@ import ProductList from "./meeting9/praktek/praktek1.jsx";
 import UpdateStateWithMap2 from "./meeting9/praktek/praktek1.jsx";
 import Praktek1 from "./meeting9/praktek/praktek1.jsx";
 import ShoppingCard from "./meeting9/praktek/praktek1.jsx";
+import Counter3 from "./meeting10/coba.jsx";
+import WithDependency from "./meeting10/coba2.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ShoppingCard />
+    <WithDependency />
   </StrictMode>
 );
