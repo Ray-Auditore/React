@@ -15,9 +15,10 @@ import ShoppingCard from "./meeting9/praktek/praktek1.jsx";
 import Counter3 from "./meeting10/coba.jsx";
 import WithDependency from "./meeting10/coba2.jsx";
 import TextLogger from "./meeting10/praktek/praktek3.jsx";
-
+import { StatusBar } from "./meeting11/11.jsx";
+import { UseTheme } from "./meeting11/praktek/no1.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <TextLogger />
+    <UseTheme />
   </StrictMode>
 );
