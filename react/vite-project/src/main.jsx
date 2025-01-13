@@ -14,9 +14,10 @@ import Praktek1 from "./meeting9/praktek/praktek1.jsx";
 import ShoppingCard from "./meeting9/praktek/praktek1.jsx";
 import Counter3 from "./meeting10/coba.jsx";
 import WithDependency from "./meeting10/coba2.jsx";
+import TextLogger from "./meeting10/praktek/praktek3.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <WithDependency />
+    <TextLogger />
   </StrictMode>
 );
