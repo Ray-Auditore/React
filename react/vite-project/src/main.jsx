@@ -16,9 +16,13 @@ import Counter3 from "./meeting10/coba.jsx";
 import WithDependency from "./meeting10/coba2.jsx";
 import TextLogger from "./meeting10/praktek/praktek3.jsx";
 import { StatusBar } from "./meeting11/11.jsx";
-import { UseTheme } from "./meeting11/praktek/no1.jsx";
+import { GantiTema } from "./meeting11/praktek/no1.jsx";
+import App2 from "./meeting11/praktek/no2.jsx";
+
+
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <UseTheme />
+    <App2/>
   </StrictMode>
 );
