@@ -18,11 +18,13 @@ import TextLogger from "./meeting10/praktek/praktek3.jsx";
 import { StatusBar } from "./meeting11/11.jsx";
 import { GantiTema } from "./meeting11/praktek/no1.jsx";
 import App2 from "./meeting11/praktek/no2.jsx";
+import App20 from "./meeting12/coba.jsx";
+import Ap21 from "./meeting12/praktek/no1.jsx";
 
 
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App2/>
+    <Ap21/>
   </StrictMode>
 );
