@@ -22,11 +22,12 @@ import App20 from "./meeting12/coba.jsx";
 import Ap21 from "./meeting12/praktek/no1.jsx";
 import CobaAxios from "./meeting13/coba.jsx";
 import AplikasiCuaca from "./meeting13/praktek/no1.jsx";
+import Produk from "./meeting9/praktek/praktek1.jsx";
 
 
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AplikasiCuaca/>
+    <ShoppingCard/>
   </StrictMode>
 );
