@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
@@ -8,36 +8,28 @@ const Login16 = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [error, setError] = useState(null);
 
-  // for Login
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("https://api.escuelajs.co/api/v1/auth/login", { email, password });
+      const token = response.data.access_token;
 
-  const handleLogin = () => {
-    axios
-      .post("https://api.escuelajs.co/api/v1/auth/login", { email, password })
-      .then((response) => {
-        const token = response.data.access_token;
-        if (token) {
-          const decoded = jwtDecode(token);
-          setUserProfile(decoded);
-        }
-        //get profile with token
+      if (token) {
+        localStorage.setItem("token", token); // Store token
+        const decoded = jwtDecode(token);
+        setUserProfile(decoded);
+      }
 
-        axios
-          .get("https://api.escuelajs.co/api/v1/auth/profilew", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then((response) => {
-            setUserProfile(response.data);
-          })
-          .catch((error) => {
-            setError("unable to fetch profile");
-          });
-      })
-      .catch((error) => {
-        setError("unable to login");
+      // Fetch profile data
+      const profileResponse = await axios.get("https://api.escuelajs.co/api/v1/auth/profile", {
+        headers: { Authorization: `Bearer ${token}` },
       });
+
+      setUserProfile(profileResponse.data);
+    } catch (error) {
+      setError(error.response?.data?.message || "Unable to login");
+    }
   };
+
   return (
     <div>
       <h2>Login Page</h2>
@@ -56,12 +48,11 @@ const Login16 = () => {
       />
 
       <button onClick={handleLogin}>Login</button>
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       {userProfile && (
         <div>
           <h3>Profile</h3>
-
           <ul>
             <li>ID : {userProfile.id}</li>
             <li>Name : {userProfile.name}</li>
