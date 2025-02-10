@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
-export default function AxiosStore23() {
+export default function AxiosStore2() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [username, setUsername] = useState("");

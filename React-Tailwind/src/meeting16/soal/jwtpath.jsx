@@ -34,8 +34,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-function Axioshop1601() {
+function Axioshop16() {
   return <RouterProvider router={router} />;
 }
 
-export default Axioshop1601;
+export default Axioshop16;
