@@ -14,9 +14,10 @@ import Axioshop160 from "./meeting16/soal/jwtpath.jsx";
 import Axioshop1601 from "./meeting16/soal/jwtpath.jsx";
 import AxiosStore2 from "./meeting15/soal/soal2back2.jsx";
 import AxiosStore23 from "./meeting16/soal/jwtback.jsx";
+import Axioshop170 from "./meeting17/praktek/jwtpath.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Axioshop1601 />
+    <Axioshop170 />
   </StrictMode>
 );
